@@ -53,7 +53,7 @@ export function App() {
     <>
       <header>
         <div className="header">
-          <h1>Not Your Keys</h1>
+          <h1>NotYourKeys</h1>
         </div>
       </header>
       <div className="main">

@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Roboto+Mono&family=Share+Tech+Mono&display=swap");
 
+@font-face {
+  font-family: 'sv_basic_manualbook';
+  src: url('../public/svbasicmanual-webfont.woff2') format('woff2'),
+       url('../public/svbasicmanual-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 :root {
   --main-bg-color: #000;
   --main-text-color: #fff;
@@ -83,11 +92,11 @@ div#root {
 } */
 
 h1 {
+  font-family: 'sv_basic_manualbook';
   margin-bottom: -10px;
   font-size: 2.5rem;
   color: var(--main-text-color);
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #0ff, 0 0 42px #0ff,
-    0 0 82px #0ff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px rgb(0 172 165), 0 0 42px rgb(21, 227, 221), 0 0 82px rgb(21, 227, 221);
 }
 
 h2 {
@@ -226,15 +235,13 @@ h5 {
 
 .button-execute.on {
   opacity: 0.7;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff6633,
-    0 0 0.8rem #bf4f2a, inset 0 0 1.3rem #c64f27;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff3399, 0 0 0.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
   transition: all ease 0.5s;
 }
 
 .button-execute.on:hover {
   opacity: 1;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff6633,
-    0 0 0.8rem #ff6633, 0 0 2.8rem #ff6633, inset 0 0 1.3rem #ff6633;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066, 0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066
 }
 
 .results {
