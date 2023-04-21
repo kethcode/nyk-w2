@@ -77,17 +77,16 @@ export function App() {
             </p>
           </div>
         </div> */}
-        <div className="main-row">
-          <div className="main-left">
-            <p>
-              puzzle 1<br />
-              puzzle 2
-            </p>
+        <div className="columns">
+          <div className="col left">
+            <a href="">puzzle 1</a>
+            <br />
+            <a href="">puzzle 2</a>
           </div>
 
-          <div className="main-center">
+          <div className="col center">
             <div className="box">
-              <p>puzzle description</p>{" "}
+              puzzle description{" "}
             </div>
             <textarea
               className="textarea-terminal"
@@ -110,7 +109,7 @@ export function App() {
               />
             )}
           </div>
-          <div className="main-right">
+          <div className="col right">
             <Stack stack={evmResults?.stack} />
             <Memory memory={evmResults?.mem} />
             <Storage

@@ -57,7 +57,7 @@ div#root {
   justify-content: space-between; */
 }
 
-.header-left {
+/* .header-left {
   flex: 1;
   justify-content: right;
 }
@@ -80,7 +80,7 @@ div#root {
 .header-right {
   flex: 1;
   text-align: right;
-}
+} */
 
 h1 {
   margin-bottom: -10px;
@@ -92,6 +92,10 @@ h1 {
 
 h2 {
   margin: 5px 0;
+}
+
+h3 {
+  margin: 0;
 }
 
 h5 {
@@ -109,7 +113,30 @@ h5 {
   justify-content: start;
   flex-direction: column;
   text-align: left;
-  margin-top: 16px;
+  padding-top: 50px;
+}
+
+.main .columns{
+  display: flex;
+  flex:1;
+  width: 100%;
+}
+
+.main .columns .col.left{
+  width: 15%;
+  order: 1;
+}
+
+.main .columns .col.center{
+  flex: 1;
+  order: 2;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.main .columns .col.right{
+  width: 30%;
+  order: 3;
 }
 
 .main .box {
@@ -120,9 +147,9 @@ h5 {
   color: var(--terminal-text-color);
   width: var(--terminal-width);
   max-width: var(--terminal-max-width);
-  margin-top: 50px;
   margin-bottom: 16px;
   font-size: var(--font-size);
+  text-align: left;
 }
 
 .main .hint,
@@ -137,7 +164,7 @@ h5 {
   border-radius: var(--border-radius);
   padding: var(--terminal-padding);
   color: var(--terminal-text-color);
-  width: var(--terminal-width);
+  width: 100%;
   max-width: var(--terminal-max-width);
   height: 6rem;
   font-family: "Roboto Mono", monospace;
@@ -182,7 +209,6 @@ h5 {
 .button-execute {
   cursor: pointer;
   margin-top: 16px;
-  padding: 8px;
 
   border: 0.2rem solid var(--main-text-color);
   border-radius: 2rem;
@@ -218,6 +244,7 @@ h5 {
 .container-terminal {
   background: var(--terminal-bg-color);
   border: 1px solid var(--terminal-border-color);
+  border-radius: var(--border-radius);
   padding: var(--terminal-padding);
   text-align: left;
   width: var(--terminal-width);
@@ -278,13 +305,12 @@ footer {
   border-radius: var(--border-radius);
   padding: var(--terminal-padding);
   color: var(--terminal-text-color);
-  width: var(--terminal-width);
-  max-width: var(--terminal-max-width);
+  width: 100%;
   margin-top: 50px;
   margin-bottom: 16px;
 }
 
-footer a {
+footer a, .col.left a {
   color: var(--main-text-color);
   text-decoration: none;
   display: block;
@@ -318,17 +344,4 @@ footer a:hover {
     filter: none;
     opacity: 0.3;
   }
-}
-
-.main-row {
-  display: flex;
-}
-
-.main-left {
-  width: 20%;
-}
-
-.main-center,
-.main-right {
-  width: 40%;
 }

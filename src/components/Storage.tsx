@@ -38,8 +38,7 @@ export function Storage(props: any) {
       storage_array = storage_map.map((slot, index) => (
         <li key={index}>
           {" "}
-          <span className="chisel-yellow">[{slot.key}]</span> :
-          <span className="chisel-cyan">{slot.data}</span>
+          <span className="chisel-yellow">[{slot.key}]</span>: <span className="chisel-cyan">{slot.data}</span>
         </li>
       ));
     }
