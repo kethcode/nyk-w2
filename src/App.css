@@ -123,7 +123,7 @@ h5 {
 }
 
 .main .columns .col.left{
-  width: 15%;
+  width: 80px;
   order: 1;
 }
 
@@ -135,7 +135,7 @@ h5 {
 }
 
 .main .columns .col.right{
-  width: 30%;
+  width: 655px;
   order: 3;
 }
 
