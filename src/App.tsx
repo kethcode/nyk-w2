@@ -26,9 +26,11 @@ export function App() {
   const [value, setValue] = useState("");
 
   const sendParamters = () => {
+    console.log("textCode: [%d]", textCode, textCode.length);
     setBytecode(textCode);
     setData(textData);
     setValue(textValue);
+    console.log("submitting [%d]:", bytecode, bytecode.length % 2);
   };
 
   const [evmResults, setEvmResults] = useState<vEVMState>();
@@ -36,18 +38,19 @@ export function App() {
     setEvmResults(results);
   };
 
-  // const checkAndExecute = (input: string) => {
-  //   console.log("input:", input);
-  //   setTextCode(input);
-  //   if (textCode) {
-  //     if (textCode.length > 0 && textCode.length % 2 == 0) {
-  //       setBytecode(textCode);
-  //       setData(textData);
-  //       setValue(textValue);
-  //     }
-  //   }
-  // };
+  const [update, triggerUpdate] = useState(0);
 
+  const checkAndExecute = (input: string) => {
+    console.log("input: [%d]", input, input.length);
+    setTextCode(input);
+    if (input) {
+      if (input.length % 2 == 0) {
+        triggerUpdate(update + 1);
+      }
+    }
+  };
+
+  const result = useMemo(() => sendParamters(), [update]);
 
   return (
     <>
@@ -85,14 +88,13 @@ export function App() {
           </div>
 
           <div className="col center">
-            <div className="box">
-              puzzle description{" "}
-            </div>
+            <div className="box">puzzle description </div>
             <textarea
               className="textarea-terminal"
               value={textCode}
               placeholder="bytecode: sum the answers, copy to memory, and return"
-              onChange={(e) => setTextCode(e.target.value)}
+              // onChange={(e) => setTextCode(e.target.value)}
+              onChange={(e) => checkAndExecute(e.target.value)}
             />
             <button
               className="button-execute on"

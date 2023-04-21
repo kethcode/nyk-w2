@@ -39,7 +39,6 @@ export function EVMResults(props: any) {
   const renderResults = () => {
     if (results) {
       // const res: vEVMState = results;
-
       // const code_temp = res.code.slice(2).match(/.{1,64}/g) || [];
       // const code_array = code_temp.map((code_slot, index) => (
       //   <li key={index}>
@@ -49,9 +48,7 @@ export function EVMResults(props: any) {
       //     </span>: <span className="chisel-cyan">{code_slot}</span>
       //   </li>
       // ));
-
       // const pc_string = parseInt(res.pc);
-
       // const data_temp = res.data.slice(2).match(/.{1,64}/g) || [];
       // const data_array = data_temp.map((data_slot, index) => (
       //   <li key={index}>
@@ -60,9 +57,7 @@ export function EVMResults(props: any) {
       //     <span className="chisel-cyan">{data_slot}</span>
       //   </li>
       // ));
-
       // const value_string = res.value.toString();
-
       // const output_temp = res.output.slice(2).match(/.{1,64}/g) || [];
       // const output_array = output_temp.map((output_slot, index) => (
       //   <li key={index}>
@@ -71,7 +66,6 @@ export function EVMResults(props: any) {
       //     <span className="chisel-cyan">{output_slot}</span>
       //   </li>
       // ));
-
       // const stack_array = res.stack.map((stack_slot, index) => (
       //   <li key={index}>
       //     {" "}
@@ -79,7 +73,6 @@ export function EVMResults(props: any) {
       //     : <span className="chisel-cyan">{stack_slot.slice(2)}</span>
       //   </li>
       // ));
-
       // const mem_temp = res.mem.slice(2).match(/.{1,64}/g) || [];
       // const mem_array = mem_temp.map((mem_slot, index) => (
       //   <li key={index}>
@@ -89,7 +82,6 @@ export function EVMResults(props: any) {
       //     </span>: <span className="chisel-cyan">{mem_slot}</span>
       //   </li>
       // ));
-
       // const storage_size = res.storageKey.length;
       // const storage_map = [];
       // for (let i = 0; i < storage_size; i++) {
@@ -102,7 +94,6 @@ export function EVMResults(props: any) {
       //     <span className="chisel-cyan">{slot.data}</span>
       //   </li>
       // ));
-
       // const logs_size = res.logs.length;
       // const logs_map = [];
       // for (let i = 0; i < logs_size; i++) {
@@ -115,10 +106,8 @@ export function EVMResults(props: any) {
       //     <span className="chisel-cyan">{log}</span>
       //   </li>
       // ));
-
       // const answer =
       //   "0x0000000000000000000000000000000000000000000000010d00edb9";
-
       // if (res.output == answer) {
       //   return (
       //     <div className="box">
@@ -142,7 +131,6 @@ export function EVMResults(props: any) {
       //     </div>
       //   );
       // }
-
       // return (
       //   <div className="results">
       //     <h2>results</h2>
@@ -205,15 +193,18 @@ export function EVMResults(props: any) {
         }
 
         if (ethers.utils.isBytesLike(code)) {
-          const result = await evm.execute(code, data, value);
-          console.log(result);
-          setResults(result);
-          props.returnEvmResults(result);
+          try {
+            const result = await evm.execute(code, data, value);
+            console.log(result);
+            setResults(result);
+            props.returnEvmResults(result);
+          } catch (e) {
+            console.log("bytecode error");
+          }
         }
       }
     }
   };
-
 
   const result = useMemo(
     () => executeBytecode(),
