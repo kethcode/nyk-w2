@@ -215,6 +215,35 @@ h5 {
   border-radius: 0 0 var(--border-radius) 0;
 }
 
+.button-waiting {
+  cursor: pointer;
+  margin-top: 16px;
+
+  border: 0.2rem solid var(--main-text-color);
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--main-text-color);
+  font-family: "Share Tech Mono", monospace;
+}
+
+.button-waiting.off {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.button-waiting.on {
+  opacity: 0.7;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #33ff99, 0 0 0.8rem #33ffcc, inset 0 0 1.3rem #00ff66;
+  transition: all ease 0.5s;
+}
+
+/* .button-waiting.on:hover {
+  opacity: 1;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #00ff66, 0 0 0.8rem #00ff66, 0 0 2.8rem #33ffcc, inset 0 0 1.3rem #00ff66
+}  */
+
 .button-execute {
   cursor: pointer;
   margin-top: 16px;
@@ -228,21 +257,23 @@ h5 {
   font-family: "Share Tech Mono", monospace;
 }
 
-.button-execute.off {
+ .button-execute.off {
   opacity: 0.3;
   cursor: not-allowed;
 }
 
 .button-execute.on {
   opacity: 0.7;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff3399, 0 0 0.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
-  transition: all ease 0.5s;
-}
-
-.button-execute.on:hover {
+  /* box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff3399, 0 0 0.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
+  transition: all ease 0.5s; */
   opacity: 1;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066, 0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066
 }
+
+/* .button-execute.on:hover {
+  opacity: 1;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066, 0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066
+}  */
 
 .results {
   margin-top: 50px;

@@ -25,17 +25,25 @@ export function App() {
   const [data, setData] = useState("");
   const [value, setValue] = useState("");
 
+  const [executing, setExecuting] = useState(false);
+
   const sendParamters = () => {
-    console.log("textCode: [%d]", textCode, textCode.length);
-    setBytecode(textCode);
-    setData(textData);
-    setValue(textValue);
-    console.log("submitting [%d]:", bytecode, bytecode.length % 2);
+    if (textCode.length != 0) {
+      console.log("textCode: [%d]", textCode, textCode.length);
+      setBytecode(textCode);
+      setData(textData);
+      setValue(textValue);
+      console.log("submitting [%d]:", bytecode, bytecode.length % 2);
+      setExecuting(true);
+    } else {
+      setExecuting(false);
+    }
   };
 
   const [evmResults, setEvmResults] = useState<vEVMState>();
   const returnEvmResults = (results: vEVMState) => {
     setEvmResults(results);
+    setExecuting(false);
   };
 
   const [update, triggerUpdate] = useState(0);
@@ -96,12 +104,28 @@ export function App() {
               // onChange={(e) => setTextCode(e.target.value)}
               onChange={(e) => checkAndExecute(e.target.value)}
             />
-            <button
+            {executing ? (
+              <button
+                className="button-execute on"
+                // onClick={(e) => sendParamters()}
+              >
+                Executing...
+              </button>
+            ) : (
+              <button
+                className="button-waiting on"
+                // onClick={(e) => sendParamters()}
+              >
+                Awaiting Input
+              </button>
+            )}
+
+            {/* <button
               className="button-execute on"
-              onClick={(e) => sendParamters()}
+              // onClick={(e) => sendParamters()}
             >
-              Execute
-            </button>
+              Executing
+            </button> */}
             {bytecode && (
               <EVMResults
                 bytecode={bytecode}

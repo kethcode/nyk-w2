@@ -200,6 +200,7 @@ export function EVMResults(props: any) {
             props.returnEvmResults(result);
           } catch (e) {
             console.log("bytecode error");
+            props.returnEvmResults(null);
           }
         }
       }
