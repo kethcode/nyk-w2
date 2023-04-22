@@ -20,7 +20,7 @@
 
   --font-size: 0.9rem;
 
-  --terminal-max-width: 90vw;
+  --terminal-max-width: 100%;
   --border-radius: 10px;
 
   --chisel-green: #59b33c;
@@ -461,3 +461,16 @@ footer a:hover {
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .main .columns{display: contents;}
+  .col{
+    width: 100%!important;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .button-puzzle-select{
+    margin:0 8px 16px 8px;
+  }
+  .main .columns .col.center{padding: 0;}
+
+}
