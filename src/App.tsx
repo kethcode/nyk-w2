@@ -345,13 +345,13 @@ export function App() {
             <textarea
               className="textarea-terminal"
               value={textCode}
-              placeholder="bytecode"
+              placeholder="type your bytecode answer here"
               onChange={(e) => checkAndExecute(e.target.value)}
             />
             {executing ? (
               <button className="button-execute on">Executing...</button>
             ) : (
-              <button className="button-waiting on">Awaiting Input</button>
+              <button className="button-waiting on">Awaiting Input...</button>
             )}
             {bytecode && (
               <EVMResults

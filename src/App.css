@@ -56,6 +56,8 @@ div#root {
   flex-direction: column;
   min-height: 100vh;
   padding: 20px;
+  max-width: 1700px;
+  margin: 0 auto;
 }
 
 .header {
@@ -132,7 +134,7 @@ h5 {
 }
 
 .main .columns .col.left {
-  width: 150px;
+  width: 200px;
   order: 1;
 }
 
@@ -141,6 +143,7 @@ h5 {
   order: 2;
   padding: 0 20px;
   text-align: center;
+  font-size: 0;
 }
 
 .main .columns .col.right {
@@ -160,6 +163,7 @@ h5 {
   font-size: var(--font-size);
   text-align: left;
   white-space: pre-line;
+  word-break: break-word;
 }
 
 .main .hint,
@@ -185,7 +189,7 @@ h5 {
 .textarea-terminal {
   background: var(--terminal-bg-color);
   border: 1px solid var(--terminal-border-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
   padding: var(--terminal-padding);
   color: var(--terminal-text-color);
   width: 100%;
@@ -230,7 +234,7 @@ h5 {
   border-radius: 0 0 var(--border-radius) 0;
 }
 
-.button-waiting {
+/* .button-waiting {
   cursor: pointer;
   margin-top: 16px;
 
@@ -241,9 +245,24 @@ h5 {
   background: transparent;
   color: var(--main-text-color);
   font-family: "Share Tech Mono", monospace;
+} */
+
+.button-waiting {
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  margin-top: -2px;
+  border: 1px solid var(--terminal-border-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  padding: 4px var(--terminal-padding) 3px;
+  font-size: 0.8rem;
+  text-transform: lowercase;
+  background: #212121;
+  color: #777;
+  font-family: "Roboto Mono", monospace;
 }
 
-.button-waiting.off {
+/* .button-waiting.off {
   opacity: 0.3;
   cursor: not-allowed;
 }
@@ -253,13 +272,13 @@ h5 {
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #33ff99,
     0 0 0.8rem #33ffcc, inset 0 0 1.3rem #00ff66;
   transition: all ease 0.5s;
-}
+} */
 
 /* .button-waiting.on:hover {
   opacity: 1;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #00ff66, 0 0 0.8rem #00ff66, 0 0 2.8rem #33ffcc, inset 0 0 1.3rem #00ff66
 }  */
-
+/* 
 .button-execute {
   cursor: pointer;
   margin-top: 16px;
@@ -271,26 +290,66 @@ h5 {
   background: transparent;
   color: var(--main-text-color);
   font-family: "Share Tech Mono", monospace;
+} */
+
+.button-execute {
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  margin-top: -2px;
+  border: 1px solid var(--terminal-border-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  padding: 4px var(--terminal-padding) 3px;
+  font-size: 0.8rem;
+  text-transform: lowercase;
+  background: #212121;
+  color: #fff;
+  font-family: "Roboto Mono", monospace;
 }
 
-.button-execute.off {
+/* .button-execute.off {
   opacity: 0.3;
   cursor: not-allowed;
 }
 
 .button-execute.on {
   opacity: 0.7;
-  /* box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff3399, 0 0 0.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
-  transition: all ease 0.5s; */
   opacity: 1;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066,
     0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
 }
 
-/* .button-execute.on:hover {
+.button-execute.on:hover {
   opacity: 1;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066, 0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066
 }  */
+
+.button-puzzle-select{
+  cursor: pointer;
+  margin-bottom: 16px;
+  width: 180px;
+  border: 0.2rem solid var(--main-text-color);
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--main-text-color);
+  transition: all ease 0.5s;
+  font-family: "Share Tech Mono", monospace;
+  opacity: 0.7;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #056758, 0 0 0.8rem #159c7a, inset 0 0 1.3rem #03b39c;
+}
+
+.button-puzzle-select:hover{
+  opacity: 1;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #25ffde,
+    0 0 0.8rem #33ffcc, inset 0 0 1.3rem #00ffdd;
+}
+
+.button-puzzle-select.active{
+  opacity: 1;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066, 0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
+}
 
 .results {
   margin-top: 50px;
@@ -401,3 +460,4 @@ footer a:hover {
     opacity: 0.3;
   }
 }
+
