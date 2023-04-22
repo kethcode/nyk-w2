@@ -38,7 +38,8 @@ export function Memory(props: any) {
   };
 
   const updateMemory = async () => {
-    console.log("memory:", props.memory);
+    if (!props.memory) return;
+    // console.log("memory:", props.memory);
     if (props.memory != "") {
       setMemory(props.memory);
     } else {

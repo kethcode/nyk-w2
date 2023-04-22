@@ -24,8 +24,9 @@ export function Storage(props: any) {
   };
 
   const updateStorage = async () => {
-    console.log("storageData:", props.storageData);
-    console.log("storageKey:", props.storageKey);
+    if (!props.storageData || !props.storageKey) return;
+    // console.log("storageData:", props.storageData);
+    // console.log("storageKey:", props.storageKey);
 
     let storage_size;
     let storage_map: any[] = [];
@@ -38,7 +39,8 @@ export function Storage(props: any) {
       storage_array = storage_map.map((slot, index) => (
         <li key={index}>
           {" "}
-          <span className="chisel-yellow">[{slot.key}]</span>:<br /> <span className="chisel-cyan"> {slot.data}</span>
+          <span className="chisel-yellow">[{slot.key}]</span>:<br />{" "}
+          <span className="chisel-cyan"> {slot.data}</span>
         </li>
       ));
     }

@@ -40,7 +40,8 @@ export function Stack(props: any) {
   };
 
   const updateStack = async () => {
-    console.log("stack:", props.stack);
+    if (!props.stack) return;
+    // console.log("stack:", props.stack);
     if (props.stack != "") {
       setStack(props.stack);
     } else {

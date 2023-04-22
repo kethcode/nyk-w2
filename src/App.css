@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Roboto+Mono&family=Share+Tech+Mono&display=swap");
 
 @font-face {
-  font-family: 'sv_basic_manualbook';
-  src: url('../public/svbasicmanual-webfont.woff2') format('woff2'),
-       url('../public/svbasicmanual-webfont.woff') format('woff');
+  font-family: "sv_basic_manualbook";
+  src: url("../public/svbasicmanual-webfont.woff2") format("woff2"),
+    url("../public/svbasicmanual-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
 
 :root {
@@ -92,11 +91,12 @@ div#root {
 } */
 
 h1 {
-  font-family: 'sv_basic_manualbook';
+  font-family: "sv_basic_manualbook";
   margin-bottom: -10px;
   font-size: 2.5rem;
   color: var(--main-text-color);
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px rgb(0 172 165), 0 0 42px rgb(21, 227, 221), 0 0 82px rgb(21, 227, 221);
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px rgb(0 172 165),
+    0 0 42px rgb(21, 227, 221), 0 0 82px rgb(21, 227, 221);
 }
 
 h2 {
@@ -104,7 +104,7 @@ h2 {
 }
 
 h3 {
-  margin: 0;
+  margin: 10px;
 }
 
 h5 {
@@ -125,25 +125,25 @@ h5 {
   padding-top: 50px;
 }
 
-.main .columns{
+.main .columns {
   display: flex;
-  flex:1;
+  flex: 1;
   width: 100%;
 }
 
-.main .columns .col.left{
-  width: 80px;
+.main .columns .col.left {
+  width: 150px;
   order: 1;
 }
 
-.main .columns .col.center{
+.main .columns .col.center {
   flex: 1;
   order: 2;
   padding: 0 20px;
   text-align: center;
 }
 
-.main .columns .col.right{
+.main .columns .col.right {
   width: 655px;
   order: 3;
 }
@@ -159,12 +159,27 @@ h5 {
   margin-bottom: 16px;
   font-size: var(--font-size);
   text-align: left;
+  white-space: pre-line;
 }
 
 .main .hint,
 .main .hint-detail,
 .main div {
   word-break: break-all;
+}
+
+.answer-box {
+  background: var(--terminal-bg-color);
+  border: 1px solid var(--terminal-border-color);
+  border-radius: var(--border-radius);
+  padding: var(--terminal-padding);
+  color: var(--terminal-text-color);
+  width: var(--terminal-width);
+  max-width: var(--terminal-max-width);
+  margin: 24px;
+  font-size: var(--font-size);
+  text-align: left;
+  white-space: pre-line;
 }
 
 .textarea-terminal {
@@ -235,7 +250,8 @@ h5 {
 
 .button-waiting.on {
   opacity: 0.7;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #33ff99, 0 0 0.8rem #33ffcc, inset 0 0 1.3rem #00ff66;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #33ff99,
+    0 0 0.8rem #33ffcc, inset 0 0 1.3rem #00ff66;
   transition: all ease 0.5s;
 }
 
@@ -257,7 +273,7 @@ h5 {
   font-family: "Share Tech Mono", monospace;
 }
 
- .button-execute.off {
+.button-execute.off {
   opacity: 0.3;
   cursor: not-allowed;
 }
@@ -267,7 +283,8 @@ h5 {
   /* box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff3399, 0 0 0.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
   transition: all ease 0.5s; */
   opacity: 1;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066, 0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff0066,
+    0 0 0.8rem #ff0066, 0 0 2.8rem #ff33cc, inset 0 0 1.3rem #ff0066;
 }
 
 /* .button-execute.on:hover {
@@ -348,7 +365,8 @@ footer {
   margin-bottom: 16px;
 }
 
-footer a, .col.left a {
+footer a,
+.col.left a {
   color: var(--main-text-color);
   text-decoration: none;
   display: block;
