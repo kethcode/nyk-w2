@@ -341,6 +341,7 @@ h5 {
 }
 
 .button-puzzle-select:hover{
+  animation: flicker 2s forwards;
   opacity: 1;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #25ffde,
     0 0 0.8rem #33ffcc, inset 0 0 1.3rem #00ffdd;
