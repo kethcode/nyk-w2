@@ -1,5 +1,5 @@
 import { EVMResults, Stack, Memory, Storage } from "./components";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 
 import "./App.css";
 
@@ -17,7 +17,6 @@ type vEVMState = {
 };
 
 export function App() {
-  //   const { isConnected } = useAccount();
   const [textCode, setTextCode] = useState("");
   const [textData, setTextData] = useState("");
   const [textValue, setTextValue] = useState("");
@@ -27,19 +26,22 @@ export function App() {
 
   const [executing, setExecuting] = useState<boolean>();
 
-  const [puzzleId, setPuzzleId] = useState(0);
+  const [puzzleId, setPuzzleId] = useState(1);
   const [puzzleDesc, setPuzzleDesc] = useState<string>();
   const [puzzleAnswer, setPuzzleAnswer] = useState<vEVMState>();
   const [puzzleStatus, setPuzzleStatus] = useState<boolean>();
+
+  const [activePuzzle, setActivePuzzle] = useState(1);
 
   const setPuzzle = () => {
     setPuzzleStatus(false);
     switch (puzzleId) {
       case 1:
         setPuzzleDesc(
-          `PUSH is an opcode that places data in a 32byte slot on the stack.\n\n` +
-            `There are 32 variants, corresponding to the size of the data you want to push.\n` +
-            `The data you are pushing follows the opcode.\n\n` +
+          `PUSH is an opcode that places 32 bytes of data on the stack.\n\n` +
+            `There are 32 variants of PUSH, corresponding to the size of the data you want to push.\n` +
+            `The stack has 1024 slots of 32 bytes each. A PUSH of any size takes an entire slot.\n` +
+            `The hex data you are pushing follows the opcode.\n\n` +
             `Look up PUSH1 on evm.codes and find the opcode.\n` +
             `Place the hex value 0x10 on the stack.`
         );
@@ -57,6 +59,7 @@ export function App() {
           logs: [],
           output: "",
         });
+        setActivePuzzle(1);
 
         return;
       case 2:
@@ -83,6 +86,7 @@ export function App() {
           logs: [],
           output: "",
         });
+        setActivePuzzle(2);
         return;
       case 3:
         setPuzzleDesc(
@@ -108,6 +112,7 @@ export function App() {
           logs: [],
           output: "",
         });
+        setActivePuzzle(3);
         return;
       case 4:
         setPuzzleDesc(
@@ -124,18 +129,19 @@ export function App() {
           value: "",
           pc: "",
           stack: [
-               "0x0000000000000000000000000000000000000000000000000000000000000010",
+            "0x0000000000000000000000000000000000000000000000000000000000000010",
           ],
           mem: "0x0000000000000000000000000000000000000000000000000000000000000020",
           storageKey: [
-               "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
           ],
           storageData: [
-               "0x0000000000000000000000000000000000000000000000000000000000000030",
+            "0x0000000000000000000000000000000000000000000000000000000000000030",
           ],
           logs: [],
           output: "",
         });
+        setActivePuzzle(4);
         return;
       default:
         return;
@@ -178,8 +184,14 @@ export function App() {
       case 4:
         console.log("stack: ", isEqual(results.stack, puzzleAnswer.stack));
         console.log("mem: ", results.mem === puzzleAnswer.mem);
-        console.log("storageData: ", isEqual(results.storageData, puzzleAnswer.storageData));
-        console.log("storageKey: ", isEqual(results.storageKey, puzzleAnswer.storageKey));
+        console.log(
+          "storageData: ",
+          isEqual(results.storageData, puzzleAnswer.storageData)
+        );
+        console.log(
+          "storageKey: ",
+          isEqual(results.storageKey, puzzleAnswer.storageKey)
+        );
 
         if (
           isEqual(results.stack, puzzleAnswer.stack) &&
@@ -315,25 +327,41 @@ export function App() {
         <div className="columns">
           <div className="col left">
             <button
-              className="button-puzzle-select"
+              className={
+                activePuzzle === 1
+                  ? "button-puzzle-select active"
+                  : "button-puzzle-select"
+              }
               onClick={(e) => setPuzzleId(1)}
             >
               puzzle 1: PUSH
             </button>
             <button
-              className="button-puzzle-select"
+              className={
+                activePuzzle === 2
+                  ? "button-puzzle-select active"
+                  : "button-puzzle-select"
+              }
               onClick={(e) => setPuzzleId(2)}
             >
               puzzle 2: MSTORE
             </button>
             <button
-              className="button-puzzle-select"
+              className={
+                activePuzzle === 3
+                  ? "button-puzzle-select active"
+                  : "button-puzzle-select"
+              }
               onClick={(e) => setPuzzleId(3)}
             >
               puzzle 3: SSTORE
             </button>
             <button
-              className="button-puzzle-select"
+              className={
+                activePuzzle === 4
+                  ? "button-puzzle-select active"
+                  : "button-puzzle-select"
+              }
               onClick={(e) => setPuzzleId(4)}
             >
               puzzle 4: QUIZ
@@ -343,6 +371,7 @@ export function App() {
           <div className="col center">
             <div className="box">{puzzleDesc}</div>
             <textarea
+              autoFocus
               className="textarea-terminal"
               value={textCode}
               placeholder="type your bytecode answer here"
@@ -377,6 +406,21 @@ export function App() {
               storageData={evmResults?.storageData}
               storageKey={evmResults?.storageKey}
             />
+            {/* {evmResults?.stack && evmResults?.stack.length > 0 && (
+              <Stack stack={evmResults.stack} />
+            )}
+            {evmResults?.mem && evmResults?.mem.length > 2 && (
+              <Memory memory={evmResults.mem} />
+            )}
+            {evmResults?.storageData &&
+              evmResults?.storageKey &&
+              evmResults?.storageData.length > 0 &&
+              evmResults?.storageKey.length > 0 && (
+                <Storage
+                  storageData={evmResults?.storageData}
+                  storageKey={evmResults?.storageKey}
+                />
+              )} */}
           </div>
         </div>
       </div>
