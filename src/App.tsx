@@ -1,5 +1,6 @@
 import { EVMResults, Stack, Memory, Storage } from "./components";
 import { useState, useMemo, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./App.css";
 
@@ -460,6 +461,7 @@ export function App() {
           https://www.browserling.com/tools/utc-to-unix
         </a>
       </footer>
+      <Analytics />
     </>
   );
 }
